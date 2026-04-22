@@ -236,6 +236,27 @@ If you'd like to map volume to other buttons or switch around anything else, her
 | Y           | but:0:3      |
 
 
+## Powkiddy V90 key mapping
+
+
+| button        | value                |
+|---------------|----------------------|
+| X             | key:0:left shift     |
+| Y             | key:0:space          |
+| A             | key:0:left alt       |
+| B             | key:0:left ctrl      |
+| START         | key:0:return         |
+| SELECT        | key:0:escape         |
+| L_SHOULDER    | key:0:tab            |
+| R_SHOULDER    | key:0:backspace      |
+| L_SHOULDER2   | key:0:page up        |
+| R_SHOULDER2   | key:0:page down      |
+| RIGHT         | key:0:right          |
+| LEFT          | key:0:left           |
+| UP            | key:0:up             |
+| DOWN          | key:0:down           |
+
+
 ## Mapping a Midi Controller
 
 TODO CLEAN UP THIS EMAIL DUMP
