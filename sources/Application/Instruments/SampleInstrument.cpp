@@ -1395,6 +1395,12 @@ void SampleInstrument::ProcessCommand(int channel,FourCC cc,ushort value) {
 	} ;
 } ;
 
+const char *SampleInstrument::GetFileName() {
+    Variable *v = FindVariable(SIP_SAMPLE);
+    const char *src = v->GetString();
+    return src;
+}
+
 const char *SampleInstrument::GetName() {
     Variable *v = FindVariable(SIP_SAMPLE);
     const char *src = v->GetString();

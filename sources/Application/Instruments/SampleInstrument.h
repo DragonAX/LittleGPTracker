@@ -90,6 +90,7 @@ public:
 	   void SetVolume(int) ;
 	   int GetSampleSize(int channel=-1) ;
        int GetLoopEnd();
+       virtual const char *GetFileName() ; // returns full sample file name
        virtual const char *GetName() ; // returns sample name until real
 	                                   // namer is implemented
  
