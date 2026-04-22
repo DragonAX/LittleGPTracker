@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "FxPrinter.h"
 
 FxPrinter::FxPrinter(ViewData* viewData)
@@ -54,7 +55,7 @@ std::string FxPrinter::parseCommand() {
         cm4 << "";
     }
     cm5 << "\" " << fo_.c_str();
-    command = cm1.str() + cm2.str() + cm3.str() + cm4.str() + cm5.str();
+    command = cm1.str() + cm2.str() + cm3.str() + cm4.str() + cm5.str() + " 2>&1";
     return command;
 }
 
@@ -67,7 +68,20 @@ bool FxPrinter::Run() {
     bool imported = SamplePool::GetInstance()->IsImported(foWav_);
     std::string cmd = parseCommand();
     Trace::Log("Processed", cmd.c_str());
-    if (system(cmd.c_str()) == 0) {
+    FILE *fp;
+    int status;
+    const int BUFFER_MAX = 1000;
+    char output[BUFFER_MAX];
+    fp = popen(cmd.c_str(), "r");
+    if (fp != NULL) {
+        while (fgets(output, BUFFER_MAX, fp) != NULL) {
+            Trace::Log("ffmpeg", "%s", output);
+        }
+        status = pclose(fp);
+    } else {
+        status = -1;
+    }
+    if (status == 0) {
         int newIndex = SamplePool::GetInstance()->Reassign(foWav_, imported);
         instrument_->AssignSample(newIndex);
         notificationResult_ = "OK!";
