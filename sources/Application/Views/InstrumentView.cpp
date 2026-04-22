@@ -314,6 +314,7 @@ void InstrumentView::ProcessButtonMask(unsigned short mask,bool pressed) {
                 }
                 case SIP_PRINTFX: {
                     FxPrinter printer(viewData_);
+		    View::SetNotification("Processing...");
                     isDirty_ = printer.Run();
                     View::SetNotification(printer.GetNotification());
                     break;
